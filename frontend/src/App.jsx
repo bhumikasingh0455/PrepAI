@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
+import { useAuth } from './context/AuthContext';
 
 // Layout Components
 import Navbar from './components/Navbar';
@@ -19,9 +20,13 @@ import DsaPractice from './pages/DsaPractice';
 import Profile from './pages/Profile';
 
 function App() {
+  const { isAuthenticated } = useAuth();
+
   return (
     <Router>
-      <div className="min-h-screen flex flex-col bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 transition-colors duration-300">
+      <div className={`min-h-screen flex bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 transition-colors duration-300 ${
+        isAuthenticated ? 'flex-col md:flex-row' : 'flex-col'
+      }`}>
         {/* Global Toast Manager */}
         <Toaster
           position="top-center"
@@ -38,8 +43,11 @@ function App() {
         {/* Navigation Bar */}
         <Navbar />
 
-        {/* Page Content */}
-        <main className="flex-grow w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        {/* Page Content Wrapper */}
+        <div className={`flex-grow flex flex-col min-w-0 ${
+          isAuthenticated ? 'md:h-screen md:overflow-y-auto' : ''
+        }`}>
+          <main className="flex-grow w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <Routes>
             {/* Public Routes */}
             <Route path="/" element={<LandingPage />} />
@@ -99,10 +107,11 @@ function App() {
         </main>
 
         {/* Footer */}
-        <Footer />
+        {!isAuthenticated && <Footer />}
       </div>
-    </Router>
-  );
+    </div>
+  </Router>
+);
 }
 
 export default App;

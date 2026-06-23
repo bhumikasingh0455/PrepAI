@@ -39,8 +39,8 @@ export default {
       },
       fontFamily: {
         sans: ['Inter', 'sans-serif'],
-        outfit: ['Poppins', 'sans-serif'],
-        display: ['Poppins', 'sans-serif'],
+        outfit: ['Space Grotesk', 'sans-serif'],
+        display: ['Space Grotesk', 'sans-serif'],
       },
       backgroundImage: {
         'glass-gradient': 'linear-gradient(135deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.01))',
