@@ -29,7 +29,9 @@ const Navbar = () => {
       ]
     : [
         { label: 'Features', path: '/#features' },
+        { label: 'How It Works', path: '/#how-it-works' },
         { label: 'Testimonials', path: '/#testimonials' },
+        { label: 'Pricing', path: '/#pricing' },
       ];
 
   const isActive = (path) => {
