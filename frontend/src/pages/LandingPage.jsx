@@ -187,6 +187,10 @@ const LandingPage = () => {
 
   // tsParticles Configuration options
   const particlesOptions = {
+    fullScreen: {
+      enable: true,
+      zIndex: -1
+    },
     background: {
       color: {
         value: "transparent",
@@ -194,6 +198,7 @@ const LandingPage = () => {
     },
     fpsLimit: 60,
     interactivity: {
+      detectsOn: "window",
       events: {
         onHover: {
           enable: true,
