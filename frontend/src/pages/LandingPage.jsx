@@ -195,33 +195,41 @@ const LandingPage = () => {
         value: "transparent",
       },
     },
-    fpsLimit: 60,
+    fpsLimit: 120,
     interactivity: {
       detectsOn: "window",
       events: {
         onHover: {
           enable: true,
           mode: "grab",
+          parallax: {
+            enable: true,
+            force: 60,
+            smooth: 15,
+          },
         },
       },
       modes: {
         grab: {
-          distance: 140,
+          distance: 220,
           links: {
-            opacity: theme === 'dark' ? 0.15 : 0.22,
+            opacity: theme === 'dark' ? 0.35 : 0.45,
+            color: theme === 'dark' ? '#0ea5e9' : '#4f46e5',
           },
         },
       },
     },
     particles: {
       color: {
-        value: theme === 'dark' ? '#38bdf8' : '#6366f1',
+        value: theme === 'dark' 
+          ? ['#38bdf8', '#8b5cf6', '#a78bfa', '#0ea5e9'] 
+          : ['#4f46e5', '#6366f1', '#4338ca', '#0ea5e9'],
       },
       links: {
-        color: theme === 'dark' ? '#8b5cf6' : '#4f46e5',
-        distance: 125,
+        color: theme === 'dark' ? '#8b5cf6' : '#6366f1',
+        distance: 110,
         enable: true,
-        opacity: theme === 'dark' ? 0.08 : 0.14,
+        opacity: theme === 'dark' ? 0.12 : 0.22,
         width: 1,
       },
       move: {
@@ -231,7 +239,7 @@ const LandingPage = () => {
           default: "out",
         },
         random: true,
-        speed: 0.8,
+        speed: 1.2,
         straight: false,
       },
       number: {
@@ -239,16 +247,26 @@ const LandingPage = () => {
           enable: true,
           area: 800,
         },
-        value: 65,
+        value: 150,
       },
       opacity: {
-        value: theme === 'dark' ? 0.25 : 0.4,
+        value: { min: 0.15, max: 0.65 },
+        animation: {
+          enable: true,
+          speed: 1.5,
+          sync: false,
+        },
       },
       shape: {
         type: "circle",
       },
       size: {
-        value: { min: 1, max: 2.2 },
+        value: { min: 0.8, max: 3.5 },
+        animation: {
+          enable: true,
+          speed: 2,
+          sync: false,
+        },
       },
     },
     detectRetina: true,
