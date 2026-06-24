@@ -47,13 +47,13 @@ const AnimatedCounter = ({ value, target, duration = 1500 }) => {
   );
 };
 
+// Initialize tsParticles engine once (defined outside for render stability)
+const initFn = async (engine) => {
+  await loadSlim(engine);
+};
+
 const LandingPage = () => {
   const { theme } = useTheme();
-
-  // Initialize tsParticles engine once
-  const initFn = async (engine) => {
-    await loadSlim(engine);
-  };
 
   // 3D Tilt Effect for Terminal
   const [rotate, setRotate] = useState({ x: 0, y: 0 });
@@ -188,8 +188,7 @@ const LandingPage = () => {
   // tsParticles Configuration options
   const particlesOptions = {
     fullScreen: {
-      enable: true,
-      zIndex: -1
+      enable: false,
     },
     background: {
       color: {
@@ -256,7 +255,7 @@ const LandingPage = () => {
   };
 
   return (
-    <div className="relative w-full py-6 md:py-12 flex flex-col space-y-24">
+    <div className="relative z-0 w-full py-6 md:py-12 flex flex-col space-y-24">
       {/* tsParticles background layer */}
       <ParticlesProvider init={initFn}>
         <Particles
