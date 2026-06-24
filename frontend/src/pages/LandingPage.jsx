@@ -6,8 +6,6 @@ import {
   ChevronRight, Star, MessageSquare, CheckSquare, Award, 
   Play, Users, Zap, Sparkles, BookOpen, Check 
 } from 'lucide-react';
-import Particles, { ParticlesProvider } from "@tsparticles/react";
-import { loadSlim } from "@tsparticles/slim";
 import { useTheme } from '../context/ThemeContext';
 import GlassCard from '../components/GlassCard';
 
@@ -45,11 +43,6 @@ const AnimatedCounter = ({ value, target, duration = 1500 }) => {
       {isPlus && '+'}
     </span>
   );
-};
-
-// Initialize tsParticles engine once (defined outside for render stability)
-const initFn = async (engine) => {
-  await loadSlim(engine);
 };
 
 const LandingPage = () => {
@@ -185,104 +178,8 @@ const LandingPage = () => {
     }
   ];
 
-  // tsParticles Configuration options
-  const particlesOptions = {
-    fullScreen: {
-      enable: false,
-    },
-    background: {
-      color: {
-        value: "transparent",
-      },
-    },
-    fpsLimit: 120,
-    interactivity: {
-      detectsOn: "window",
-      events: {
-        onHover: {
-          enable: true,
-          mode: "grab",
-          parallax: {
-            enable: true,
-            force: 60,
-            smooth: 15,
-          },
-        },
-      },
-      modes: {
-        grab: {
-          distance: 220,
-          links: {
-            opacity: theme === 'dark' ? 0.35 : 0.45,
-            color: theme === 'dark' ? '#0ea5e9' : '#4f46e5',
-          },
-        },
-      },
-    },
-    particles: {
-      color: {
-        value: theme === 'dark' 
-          ? ['#38bdf8', '#8b5cf6', '#a78bfa', '#0ea5e9'] 
-          : ['#4f46e5', '#6366f1', '#4338ca', '#0ea5e9'],
-      },
-      links: {
-        color: theme === 'dark' ? '#8b5cf6' : '#6366f1',
-        distance: 110,
-        enable: true,
-        opacity: theme === 'dark' ? 0.12 : 0.22,
-        width: 1,
-      },
-      move: {
-        direction: "none",
-        enable: true,
-        outModes: {
-          default: "out",
-        },
-        random: true,
-        speed: 1.2,
-        straight: false,
-      },
-      number: {
-        density: {
-          enable: true,
-          area: 800,
-        },
-        value: 150,
-      },
-      opacity: {
-        value: { min: 0.15, max: 0.65 },
-        animation: {
-          enable: true,
-          speed: 1.5,
-          sync: false,
-        },
-      },
-      shape: {
-        type: "circle",
-      },
-      size: {
-        value: { min: 0.8, max: 3.5 },
-        animation: {
-          enable: true,
-          speed: 2,
-          sync: false,
-        },
-      },
-    },
-    detectRetina: true,
-  };
-
   return (
     <div className="relative z-0 w-full py-6 md:py-12 flex flex-col space-y-24">
-      {/* tsParticles background layer */}
-      <ParticlesProvider init={initFn}>
-        <Particles
-          id="tsparticles"
-          options={particlesOptions}
-          className="absolute inset-0 pointer-events-none -z-10"
-        />
-      </ParticlesProvider>
-
       {/* Hero Section */}
       <motion.section 
         variants={containerVariants}

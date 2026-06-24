@@ -7,6 +7,7 @@ import { useAuth } from './context/AuthContext';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import ProtectedRoute from './components/ProtectedRoute';
+import { ParticlesBackground } from './components/ParticlesBackground';
 
 // Pages
 import LandingPage from './pages/LandingPage';
@@ -24,9 +25,12 @@ function App() {
 
   return (
     <Router>
-      <div className={`min-h-screen flex bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 transition-colors duration-300 ${
+      <div className={`min-h-screen flex relative z-0 bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 transition-colors duration-300 ${
         isAuthenticated ? 'flex-col md:flex-row' : 'flex-col'
       }`}>
+        {/* Global Particle Background */}
+        <ParticlesBackground />
+
         {/* Global Toast Manager */}
         <Toaster
           position="top-center"
