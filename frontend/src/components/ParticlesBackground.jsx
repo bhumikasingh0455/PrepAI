@@ -124,7 +124,7 @@ const ParticlesBackgroundComponent = () => {
           enable: true,
           area: 800,
         },
-        value: 45, // Not too dense
+        value: 100, // Increased density for premium visual richness
       },
       opacity: {
         value: { min: 0.1, max: 0.5 },
@@ -152,7 +152,7 @@ const ParticlesBackgroundComponent = () => {
         options: {
           particles: {
             number: {
-              value: 15, // Mobile optimization
+              value: 30, // Optimized mobile density
             },
             links: {
               enable: false, // Disable connecting lines on mobile
